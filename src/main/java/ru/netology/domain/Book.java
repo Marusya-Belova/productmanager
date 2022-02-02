@@ -1,17 +1,18 @@
 package ru.netology.domain;
 
+
 import java.util.Objects;
 
 public class Book extends Product {
     private String author;
 
-    public Book() {
-        super();
-    }
-
     public Book(int id, String name, int price, String author) {
         super(id, name, price);
         this.author = author;
+    }
+
+    public Book() {
+        super();
     }
 
     public String getAuthor() {
@@ -41,5 +42,10 @@ public class Book extends Product {
         return "Book{" +
                 "author='" + author + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean matches(String search) {
+        return super.matches(search)|| this.author.contains(search);
     }
 }

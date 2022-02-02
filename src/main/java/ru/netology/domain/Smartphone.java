@@ -42,4 +42,9 @@ public class Smartphone extends Product {
                 "creator='" + creator + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean matches(String search) {
+        return super.matches(search)||this.creator.contains(search);
+    }
 }
