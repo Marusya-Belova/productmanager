@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
+import ru.netology.exception.NotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +44,11 @@ class ProductRepositoryTest {
         repository.removeById(3);
 
         assertArrayEquals(new Product[]{one, two, four, five}, repository.findAll());
+    }
+    @Test
+    void shouldThrowNotFoundExeptionIfProductWithIdNotExist() {
+        assertThrows(NotFoundException.class, () -> {
+            repository.removeById(3);
+        });
     }
 }
